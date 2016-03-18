@@ -1,0 +1,244 @@
+﻿[  
+   {  
+      "SectionId":1,
+      "SectionName":"Women Collection",
+      "Products":[  
+         {
+            "Name": "Bags",
+            "CategoryId":  1,
+            "Items":[  
+               {  
+                  "ItemId":1,
+                  "ItemName":"Lorem Ipsum 1",
+                  "ItemCode":"DEN1098",
+                  "Description":"Lorem Ipsum 1 Desc",
+                  "ImgUrl":"../Content/images/product1.jpg",
+                  "SubImages":[  
+                     "../Content/images/product1.jpg",
+                     "../Content/images/product2.jpg",
+                     "../Content/images/product3.jpg"
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":1,
+                  "PriceSale":8,
+                  "PriceStandard": 6,
+                  "Qty": 0
+               },
+               {  
+                  "ItemId":2,
+                  "ItemName":"Lorem Ipsum 2",
+                  "ItemCode":"DEN1099",
+                  "Description":"Lorem Ipsum 2 Desc",
+                  "ImgUrl":"../Content/images/product2.jpg",
+                  "SubImages":[  
+                     "../Content/images/product2.jpg",
+                     "../Content/images/product3.jpg",
+                     "../Content/images/product1.jpg"
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":1,
+                  "PriceSale":6,
+                  "PriceStandard":7,
+                  "Qty": 0
+               }
+            ]
+         },
+         {
+            "Name": "Kameez",
+            "CategoryId":  2,
+            "Items":[  
+               {  
+                  "ItemId":3,
+                  "ItemName":"Lorem Ipsum 3",
+                  "ItemCode":"DEN1129",
+                  "Description":"Lorem Ipsum 3 Desc",
+                  "ImgUrl":"../Content/images/product3.jpg",
+                  "SubImages":[  
+                     "../Content/images/product3.jpg",
+                     "../Content/images/product5.jpg",
+                     "../Content/images/product6.jpg"
+                  ],
+                  "IsNewArrival":0,
+                  "IsFeature":1,
+                  "PriceSale":67,
+                  "PriceStandard":77,
+                  "Qty": 0
+               },
+               {  
+                  "ItemId":4,
+                  "ItemName":"Lorem Ipsum 4",
+                  "ItemCode":"DEN4439",
+                  "Description":"Lorem Ipsum 4 Desc",
+                  "ImgUrl":"../Content/images/product4.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":0,
+                  "IsFeature":1,
+                  "PriceSale":7,
+                  "PriceStandard":3,
+                  "Qty": 0
+               }
+            ]
+         }
+      ]
+   },
+   {  
+      "SectionId":2,
+      "SectionName":"Men Collection",
+      "Products":[  
+         {
+            "Name": "Panjabi",
+            "CategoryId":  3,
+            "Items":[  
+               {  
+                  "ItemId":5,
+                  "ItemName":"Lorem Ipsum 5",
+                  "ItemCode":"DEN43233",
+                  "Description":"Lorem Ipsum 5 Desc",
+                  "ImgUrl":"../Content/images/product5.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":0,
+                  "PriceSale":23,
+                  "PriceStandard":3,
+                  "Qty": 0
+               },
+               {  
+                  "ItemId":6,
+                  "ItemName":"Lorem Ipsum 6",
+                  "ItemCode":"DEN23439",
+                  "Description":"Lorem Ipsum 6 Desc",
+                  "ImgUrl":"../Content/images/product6.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":0,
+                  "PriceSale":23,
+                  "PriceStandard":4,
+                  "Qty": 0
+               }
+            ]
+         },
+         {
+            "Name": "Male Fragrances",
+            "CategoryId":  4,
+            "Items":[  
+               {  
+                  "ItemId":7,
+                  "ItemName":"Lorem Ipsum 7",
+                  "ItemCode":"DEN109349",
+                  "Description":"Lorem Ipsum 7 Desc",
+                  "ImgUrl":"../Content/images/product7.jpg",
+                  "SubImages":[  
+                     "../Content/images/product7.jpg",
+                     "../Content/images/product5.jpg",
+                     "../Content/images/product6.jpg"
+                  ],
+                  "IsNewArrival":0,
+                  "IsFeature":1,
+                  "PriceSale":25,
+                  "PriceStandard":43,
+                  "Qty": 0
+               },
+               {  
+                  "ItemId":8,
+                  "ItemName":"Lorem Ipsum 8",
+                  "ItemCode":"DEN123099",
+                  "Description":"Lorem Ipsum 8 Desc",
+                  "ImgUrl":"../Content/images/product8.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":0,
+                  "PriceSale":33,
+                  "PriceStandard":55,
+                  "Qty": 0
+               }
+            ]
+         }
+      ]
+   },
+   {  
+      "SectionId":3,
+      "SectionName":"Top Brands",
+      "Products":[  
+         {
+            "Name": "Diesel",
+            "CategoryId":  5,
+            "Items":[  
+               {  
+                  "ItemId":5,
+                  "ItemName":"Lorem Ipsum 9",
+                  "ItemCode":"DEN103399",
+                  "Description":"Lorem Ipsum 9 Desc",
+                  "ImgUrl":"../Content/images/product1.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":0,
+                  "PriceSale":23,
+                  "PriceStandard":43,
+                  "Qty": 0
+               },
+               {  
+                  "ItemId":6,
+                  "ItemName":"Lorem Ipsum 10",
+                  "ItemCode":"DEN1034399",
+                  "Description":"Lorem Ipsum 10 Desc",
+                  "ImgUrl":"../Content/images/product2.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":0,
+                  "PriceSale":23,
+                  "PriceStandard":43,
+                  "Qty": 0
+               }
+            ]
+         },
+         {
+            "Name": "Farah",
+            "CategoryId":  6,
+            "Items":[  
+               {  
+                  "ItemId":7,
+                  "ItemName":"Lorem Ipsum 11",
+                  "ItemCode":"DEN123099",
+                  "Description":"Lorem Ipsum 11 Desc",
+                  "ImgUrl":"../Content/images/product3.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":0,
+                  "PriceSale":44,
+                  "PriceStandard":23,
+                  "Qty": 0
+               },
+               {  
+                  "ItemId":8,
+                  "ItemName":"Lorem Ipsum 12",
+                  "ItemCode":"DEN2331099",
+                  "Description":"Lorem Ipsum 12 Desc",
+                  "ImgUrl":"../Content/images/product4.jpg",
+                  "SubImages":[  
+
+                  ],
+                  "IsNewArrival":1,
+                  "IsFeature":0,
+                  "PriceSale":23,
+                  "PriceStandard":54,
+                  "Qty": 0
+               }
+            ]
+         }
+      ]
+   }
+]

@@ -1,0 +1,183 @@
+﻿<div class="container">
+    
+    <h3 class="section-title style2 text-center"><span>NEW ARRIVALS</span></h3>
+    
+    <div id="productslider" class="owl-theme">
+        <new-arrival-owl-carousel id="referenceId" owl-carousel="referenceId" class="owl-carousel">
+
+            <div class="item" ng-repeat="newArrival in newArrivals">
+                <div class="product">
+                    <a class="add-fav" data-toggle="tooltip" data-original-title="Add to Wishlist" ng-click="addToMyWishList(newArrival)" data-placement="left">
+                        <i class="glyphicon glyphicon-heart"></i>
+                    </a>
+                    <div class="image">
+                        <div class="quickview">
+                            <a title="Quick View" class="btn btn-xs  btn-quickview" data-target="#product-details-modal" ng-click="getSelectedProductItemById(helperService.sha256(newArrival.ItemId))" data-toggle="modal"> Quick View </a>
+                        </div><a href="" ng-click="helperService.moveToPage('productDetails', newArrival.ItemId)"><img src="{{ newArrival.ImgUrl }}" alt="img" class="img-responsive"></a>
+                        <div class="promotion"> <span class="new-product"> NEW</span> <span class="discount">15% OFF</span> </div>
+                    </div>
+                    <div class="description">
+                        <h4><a href="" ng-click="helperService.moveToPage('productDetails', newArrival.ItemId)"> {{ newArrival.ItemName }} </a></h4>
+                        <p>{{ newArrival.Description }} </p>
+                    </div>
+                    <div class="price"> <span>${{ newArrival.PriceSale }}</span> </div>
+                    <div class="action-control"> <a class="btn btn-primary"> <span class="add2cart" ng-click="addToCart(newArrival)"><i class=" glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a> </div>
+                </div>
+            </div>
+
+        </new-arrival-owl-carousel>
+    </div>
+</div>
+
+<div class="container main-container">
+
+    <!-- Main component call to action -->
+    <div class="morePost row featuredPostContainer style2 globalPaddingTop ">
+        <h3 class="section-title style2 text-center"><span>FEATURES PRODUCT</span></h3>
+        <div class="container">
+            <div class="row">
+                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="featureProduct in featureProducts">
+                    <div class="product">
+                        <a class="add-fav" href="" ng-click="addToMyWishList(featureProduct)" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
+                            <i class="glyphicon glyphicon-heart"></i>
+                        </a>
+
+                        <div class="image">
+                            <div class="quickview">
+                                <a title="Quick View" class="btn btn-xs  btn-quickview" data-target="#product-details-modal" ng-click="getSelectedProductItemById(helperService.sha256(featureProduct.ItemId))" data-toggle="modal"> Quick View </a>
+                            </div><a href="" ng-click="helperService.moveToPage('productDetails', featureProduct.ItemId)"><img src="{{ featureProduct.ImgUrl }}" alt="img" class="img-responsive"></a>
+                            <div class="promotion"> <span class="new-product"> NEW</span> <span class="discount">15% OFF</span> </div>
+                        </div>
+                        <div class="description">
+                            <h4><a href="" ng-click="helperService.moveToPage('productDetails', featureProduct.ItemId)">{{ featureProduct.ItemName }}</a></h4>
+                            <p>{{ featureProduct.Description }} </p>
+                        </div>
+                        <div class="price"> <span>${{ featureProduct.PriceSale }}</span> <span class="old-price">${{ featureProduct.PriceStandard }}</span> </div>
+                        <div class="action-control"> <a class="btn btn-primary"> <span class="add2cart" ng-click="addToCart(featureProduct)"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a> </div>
+                    </div>
+                </div>
+                <!--/.item-->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="load-more-block text-center"> <a class="btn btn-thin" href="#"> <i class="fa fa-plus-sign">+</i> load more products</a> </div>
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.featuredPostContainer-->
+</div>
+
+<!-- Product Details Modal  -->
+<div class="modal fade" id="product-details-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button" ng-click="clearQuantity()"> × </button>
+            <div class="col-lg-5 col-md-5 col-sm-5  col-xs-12">
+
+                <!-- product Image -->
+
+                <div class="main-image  col-lg-12 no-padding style3">
+                    <a class="product-largeimg-link" href="" ng-click="helperService.moveToPage('productDetails', selectedProductItem.ItemId)">
+                        <img src="{{ productDetailsMainImageUrl }}" class="img-responsive product-largeimg" alt="img">
+                    </a>
+                </div>
+                <!--/.main-image-->
+
+                <div class="modal-product-thumb">
+                    <a class="thumbLink" ng-class="{selected: $index==selectedId}" ng-repeat="subImage in selectedProductItem.SubImages">
+                        <img data-large="{{ subImage }}" alt="img" class="img-responsive" ng-click="swapMainImage($index)" src="{{ subImage }}">
+                    </a>
+                </div> <!--/.modal-product-thumb-->
+            </div> <!--/ product Image-->
+
+
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 modal-details no-padding">
+                <form name="myForm" ng-controller="homeViewModel" class="my-form">
+                    <div class="modal-details-inner">
+                        <h1 class="product-title"> {{ selectedProductItem.ItemName }}</h1>
+                        <h3 class="product-code">Product Code : {{ selectedProductItem.ItemCode }}</h3>
+                        <div class="product-price"> <span class="price-sales"> ${{ selectedProductItem.PriceSale }}</span> <span class="price-standard">${{ selectedProductItem.PriceStandard }}</span> </div>
+                        <div class="details-description">
+                            <p>{{ selectedProductItem.Description }} </p>
+                        </div>
+                        <div class="color-details">
+                            <span class="selected-color"><strong>COLOR</strong></span>
+                            <ul class="swatches Color">
+                                <li class="selected" color-switch>
+                                    <a style="background-color:#f1f40e"> </a>
+                                </li>
+                                <li color-switch>
+                                    <a style="background-color:#adadad"> </a>
+                                </li>
+                                <li color-switch>
+                                    <a style="background-color:#4EC67F"> </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/.color-details-->
+                        <div class="productFilter productFilterLook2">
+                            <div class="filterBox">
+                                <!--<input name="qty" ng-model="qty" type="number" value="1" class="form-control input-modal-qty-mysize" required placeholder="Qty" />-->
+                                <select class="form-control"
+                                        name="quantitySelectOption"
+                                        ng-model="selectedQty"
+                                        ng-options="quantityOption.name for quantityOption in quantityOptions"
+                                        required>
+                                    <option value="">Quantity</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- productFilter -->
+
+                        <div class="cart-actions">
+                            <div class="addto">
+                                <button ng-click="addToCart(selectedProductItem)" class="button btn-cart cart first" title="Add to Cart" type="button">Add to Cart</button>
+                            </div>
+                        </div>
+                        <!--/.cart-actions-->
+
+                        <div class="product-share clearfix">
+                            <p> SHARE </p>
+                            <div class="socialIcon">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-pinterest"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!--/.product-share-->
+                    </div><!--/.modal-details-inner-->
+                </form>
+            </div>
+            <!--/.modal-details-->
+            <div class="clear"></div>
+        </div><!--/.modal-content-->
+    </div><!--/.modal-content-->
+</div>
+<!-- End Modal -->
+
+
+<div class="parallax-section parallax-image-1">
+    <div class="container">
+        <div class="row ">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="parallax-content clearfix">
+                    <h1 class="parallaxPrce"> $200 </h1>
+                    <h2 class="uppercase">FREE INTERNATIONAL SHIPPING! Get Free Shipping Coupons</h2>
+                    <h3> Energistically develop parallel mindshare rather than premier deliverables. </h3>
+                    <div style="clear:both"></div>
+                    <a class="btn btn-discover "> <i class="fa fa-shopping-cart"></i> SHOP NOW </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

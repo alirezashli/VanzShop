@@ -1,0 +1,102 @@
+﻿
+    <div class="col-lg-9 col-md-9 col-sm-12">
+        <div class="row userInfo">
+
+            <div class="col-xs-12 col-sm-12">
+
+                <div class="w100 clearfix">
+
+
+                    <div class="row userInfo">
+
+                        <div class="col-lg-12">
+                            <h2 class="block-title-2"> Review Order </h2>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12">
+                            <div class="cartContent w100 checkoutReview ">
+                                <table class="cartTable table-responsive" style="width:100%">
+                                    <tbody>
+                                        <tr class="CartProduct cartTableHeader">
+                                            <th style="width:15%"> Product </th>
+                                            <th class="checkoutReviewTdDetails">Details</th>
+                                            <th style="width:10%">Unit Price</th>
+                                            <th class="hidden-xs" style="width:5%">Quantity</th>
+                                            <th class="hidden-xs" style="width:10%">Discount</th>
+                                            <th style="width:15%">Total</th>
+                                        </tr>
+                                        <tr class="CartProduct" ng-repeat="(key,myCart) in myCartService.myCarts">
+                                            <td class="CartProductThumb"><div> <a href=""><img src="{{ myCart.ImgUrl }}"></a> </div></td>
+                                            <td>
+                                                <div class="CartDescription">
+                                                    <h4> <a href="">{{ myCart.Description }} </a> </h4>
+
+                                                </div>
+                                            </td>
+                                            <td class="delete"><div class="price ">${{ myCart.PriceSale }} </div></td>
+                                            <td class="hidden-xs">{{ myCart.Qty || 0 }}</td>
+                                            <td class="hidden-xs">0</td>
+                                            <td class="price">${{ myCart.Qty * myCart.PriceSale || 0 }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--cartContent-->
+
+                            <div class="w100 costDetails">
+                                <div class="table-block" id="order-detail-content">
+                                    <table class="std table" id="cart-summary">
+                                        <tr>
+                                            <td>Total products</td>
+                                            <td class="price">${{ myCartService.getSubTotalCount() || 0 }} </td>
+                                        </tr>
+                                        <tr style="">
+                                            <td>Shipping</td>
+                                            <td class="price"><span class="success">Free shipping!</span></td>
+                                        </tr>
+                                        <tr class="cart-total-price ">
+                                            <td>Total (tax excl.)</td>
+                                            <td class="price">${{ myCartService.getSubTotalCount() || 0 }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total tax</td>
+                                            <td id="total-tax" class="price">{{ tax }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td> Total </td>
+                                            <td id="total-price" class="price">${{ myCartService.getTotalWithTax() }} </td>
+                                        </tr>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!--/costDetails-->
+                            <!--/row-->
+                        </div>
+                    </div>
+
+                </div><!--/row end-->
+
+                <div class="cartFooter w100">
+                    <div class="box-footer">
+                        <div class="pull-left">
+                            <a class="btn btn-default" href="" ng-click="helperService.moveToPage('checkout/paymentView')">
+                                <i class="fa fa-arrow-left"></i> &nbsp; Back
+                            </a>
+                        </div>
+
+                        <div class="pull-right">
+                            <a href="" ng-click="submitOrder()" class="btn btn-primary btn-small ">
+                                Confirm Order &nbsp; <i class="fa fa-check"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/ cartFooter -->
+
+            </div>
+
+        </div>
+    </div>
+    <!--/row end-->

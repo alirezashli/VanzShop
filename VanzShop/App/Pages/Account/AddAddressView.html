@@ -1,0 +1,166 @@
+﻿<div class="container main-container headerOffset">
+    <div class="row">
+
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li> <a href="" ng-click="helperService.moveToPage('home')">Home</a> </li>
+                <li> <a href="" ng-click="helperService.moveToPage('account')">My Account</a> </li>
+                <li class="active"> Add Address </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-11 col-md-11 col-sm-9">
+
+            <h1 class="section-title-inner"><span><i class="fa fa-map-marker"></i> Add Your addresses </span></h1>
+
+            <div class="row userInfo">
+
+                <div class="col-lg-12 col-xs-12">
+                    <h2 class="block-title-2"> To add a new address, please fill out the form below. </h2>
+                    <p class="required"><sup>*</sup> Required field</p>
+                </div>
+
+                <form name="addressForm" novalidate ng-submit="submitAddressForm()">
+
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="addressTitle">Address Title<sup>*</sup></label>
+                            <input required type="tel" name="addressTitle" id="addressTitle" ng-model="addressInformations.addressTitle" class="form-control" placeholder="Address Title">
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!addressForm.addressTitle.$invalid || !addressForm.addressTitle.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="addressForm.addressTitle.$invalid || !addressForm.addressTitle.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="addressForm.addressTitle.$invalid && addressForm.addressTitle.$dirty" ng-messages="addressForm.addressTitle.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Address title', 'required') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressCompany">Company </label>
+                            <input type="text" class="form-control" name="addressCompany" id="addressCompany" ng-model="addressInformations.company" placeholder="Company">
+                        </div>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="addressAddress">Address <sup>*</sup> </label>
+                            <input required type="text" class="form-control" name="addressAddress" id="addressAddress" ng-model="addressInformations.address" placeholder="Address">
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!addressForm.addressAddress.$invalid || !addressForm.addressAddress.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="addressForm.addressAddress.$invalid || !addressForm.addressAddress.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="addressForm.addressAddress.$invalid && addressForm.addressAddress.$dirty" ng-messages="addressForm.addressAddress.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Address', 'required') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressAddress2">Address (Line 2) </label>
+                            <input type="text" class="form-control" name="addressAddress2" id="addressAddress2" ng-model="addressInformations.address2" placeholder="Address">
+                        </div>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="addressCity">City <sup>*</sup> </label>
+                            <input required type="text" class="form-control" name="addressCity" id="addressCity" ng-model="addressInformations.city" placeholder="City">
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!addressForm.addressCity.$invalid || !addressForm.addressCity.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="addressForm.addressCity.$invalid || !addressForm.addressCity.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="addressForm.addressCity.$invalid && addressForm.addressCity.$dirty" ng-messages="addressForm.addressCity.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('City', 'required') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': !addressForm.addressStates.$pristine && (addressForm.addressStates.$invalid || addressForm.addressStates.$invalid)}">
+                            <label for="addressStates">State <sup>*</sup> </label>
+
+                            <!--<select-states id="addressStates"></select-states>-->
+
+                            <select class="form-control" required name="addressStates" id="addressStates" ng-model="addressInformations.states" ng-options="state.name for state in states">
+                                <option value="">-- Choose --</option>
+                            </select>
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!addressForm.addressStates.$invalid || !addressForm.addressStates.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="addressForm.addressStates.$invalid || !addressForm.addressStates.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="addressForm.addressStates.$invalid && addressForm.addressStates.$dirty" ng-messages="addressForm.addressStates.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('States', 'required') }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="addressZip">Zip / Postal Code <sup>*</sup> </label>
+                            <input required type="text" class="form-control" name="addressZip" id="addressZip" ng-model="addressInformations.zip" placeholder="Zip / Postal Code">
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!addressForm.addressZip.$invalid || !addressForm.addressZip.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="addressForm.addressZip.$invalid || !addressForm.addressZip.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="addressForm.addressZip.$invalid && addressForm.addressZip.$dirty" ng-messages="addressForm.addressZip.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Zip / Postal Code', 'required') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': !addressForm.addressCountry.$pristine && (addressForm.addressCountry.$invalid || addressForm.addressCountry.$invalid)}">
+                            <label for="addressCountry">Country <sup>*</sup> </label>
+
+                            <select class="form-control" required name="addressCountry" id="addressCountry" ng-model="addressInformations.country" ng-options="country.name for country in countries">
+                                <option value="">-- Choose --</option>
+                            </select>
+                           
+                            <!--<select-countries id="addressCountry"></select-countries>-->
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!addressForm.addressCountry.$invalid || !addressForm.addressCountry.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="addressForm.addressCountry.$invalid || !addressForm.addressCountry.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="addressForm.addressCountry.$invalid && addressForm.addressCountry.$dirty" ng-messages="addressForm.addressCountry.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Country', 'required') }}</p>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="addressAdditionalInformation">Additional information</label>
+                            <textarea rows="3" cols="26" class="form-control" name="addressAdditionalInformation" id="addressAdditionalInformation" ng-model="addressInformations.addressAdditionalInformation"></textarea>
+                        </div>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="addressMobile">Mobile phone <sup>*</sup></label>
+                            <input required type="tel" name="addressMobile" id="addressMobile" ng-model="addressInformations.mobile" class="form-control">
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!addressForm.addressMobile.$invalid || !addressForm.addressMobile.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="addressForm.addressMobile.$invalid || !addressForm.addressMobile.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="addressForm.addressMobile.$invalid && addressForm.addressMobile.$dirty" ng-messages="addressForm.addressMobile.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Mobile phone', 'required') }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-xs-12 clearfix">
+                        <button type="submit" ng-disabled="addressForm.$invalid" class="btn btn-primary"><i class="fa fa-map-marker"></i> Save Address </button>
+                    </div>
+
+                </form>
+
+
+                <div class="col-lg-12 col-xs-12  clearfix ">
+
+                    <ul class="pager">
+                        <li class="previous pull-right"><a href="" ng-click="helperService.moveToPage('home')"> <i class=" fa fa-home"></i> Go to Shop </a></li>
+                        <li class="next pull-left"><a href="" ng-click="helperService.moveToPage('myAddress')"> &larr; Back to My Address</a></li>
+                    </ul>
+                </div>
+
+
+
+            </div><!--/row end-->
+
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5">
+        </div>
+
+
+    </div><!--/row-->
+
+
+
+    <div style="clear:both"></div>
+</div>
+<!-- /wrapper -->
+
+<div class="gap"> </div>

@@ -1,0 +1,27 @@
+{
+  "name": "VanzShopApp",
+  "authors": [
+    "Vanz Perla"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "1.5.0",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.1",
+    "angular-route": "^1.5.1",
+    "angular-messages": "^1.5.1",
+    "angular-cookies": "^1.5.1",
+    "angular-bootstrap": "^1.2.4",
+    "angular-ui-router": "^0.2.18",
+    "owl.carousel": "^2.0.0-beta.3",
+    "jquery.sha256": "^1.1.0",
+    "font-awesome": "fontawesome#^4.5.0",
+    "bootbox.js": "bootbox#^4.4.0",
+    "angular-footable": "^1.0.3",
+    "Smoothproducts": "https://github.com/kthornbloom/Smoothproducts.git"
+  }
+}

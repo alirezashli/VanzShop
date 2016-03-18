@@ -1,0 +1,28 @@
+﻿{
+    "Products": [
+        {
+            "CategoryId": 1,
+            "CategoryName": "Women Collection",
+            "Items": [
+                { "ItemId": 1, "CategoryId": 1, "ItemName": "Bags", "Description": "Bags Desc" },
+                { "ItemId": 2, "CategoryId": 1, "ItemName": "Kameez", "Description": "Kameez Desc" }
+            ]
+        },
+        {
+            "CategoryId": 2,
+            "CategoryName": "Men Collection",
+            "Items": [
+                { "ItemId": 3, "CategoryId": 2, "ItemName": "Panjabi", "Description": "Panjabi Desc" },
+                { "ItemId": 4, "CategoryId": 2, "ItemName": "Male Fragrances", "Description": "Male Fragrances Desc" }
+            ]
+        },
+        {
+            "CategoryId": 3,
+            "CategoryName": "Top Brands",
+            "Items": [
+                { "ItemId": 5, "CategoryId": 3, "ItemName": "Diesel", "Description": "Diesel Desc" },
+                { "ItemId": 6, "CategoryId": 3, "ItemName": "Farah", "Description": "Farah Desc" }
+            ]
+        }
+    ]
+}

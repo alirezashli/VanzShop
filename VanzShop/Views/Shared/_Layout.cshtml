@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="VanzShopApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanz Shop</title>
+    <!-- TODO: Need to bundle -->
+    <link rel="stylesheet" href="~/Scripts/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Scripts/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Scripts/bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Scripts/bower_components/footable/css/footable.core.min.css" />
+    <link rel="stylesheet" href="~/Scripts/bower_components/Smoothproducts/css/smoothproducts.css"
+           />
+    <link rel="stylesheet" href="~/Content/css/skin.css" />
+    <link rel="stylesheet" href="~/Content/css/Site.css" />
+</head>
+<body>
+    @RenderBody();
+    <header ng-controller="indexViewModel">
+        <div id="top"></div>
+        <!-- Modal Login start -->
+        <div class="modal signUpContent fade" id="ModalLogin" tabindex="-1" role="dialog">
+            <form name="loginForm" novalidate>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                            <h3 class="modal-title-site text-center"> Login to VANZ SHOP </h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group login-username has-feedback" show-errors="{ trigger: 'keypress' }">
+                                <div>
+                                    <input required name="loginUsername" id="loginUsername" ng-model="loginFormFields.username" class="form-control input" size="20" placeholder="Enter Username" type="text">
+                                </div>
+
+                                <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!loginForm.loginUsername.$invalid || !loginForm.loginUsername.$dirty" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="loginForm.loginUsername.$invalid || !loginForm.loginUsername.$dirty" aria-hidden="true"></span>
+
+                                <div ng-show="loginForm.loginUsername.$invalid && loginForm.loginUsername.$dirty" ng-messages="loginForm.loginUsername.$error">
+                                    <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Username', 'required') }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group login-password has-feedback" show-errors="{ trigger: 'keypress' }">
+                                <div>
+                                    <input required name="loginPassword" id="loginPassword" ng-model="loginFormFields.password" class="form-control input" size="20" placeholder="Password" type="password">
+                                </div>
+
+                                <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!loginForm.loginPassword.$invalid || !loginForm.loginPassword.$dirty" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="loginForm.loginPassword.$invalid || !loginForm.loginPassword.$dirty" aria-hidden="true"></span>
+
+                                <div ng-show="loginForm.loginPassword.$invalid && loginForm.loginPassword.$dirty" ng-messages="loginForm.loginPassword.$error">
+                                    <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Password', 'required') }}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <input name="submit" ng-disabled="loginForm.$invalid" data-dismiss="modal" class="btn  btn-block btn-lg btn-primary" value="LOGIN" type="submit" ng-click="loginUser(loginFormFields.username, loginFormFields.password)">
+                                </div>
+                            </div>
+                            <!--userForm-->
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">
+                                Not here before? <a data-toggle="modal" data-dismiss="modal" href="#ModalSignup"> Sign Up. </a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+
+                </div>
+            </form>
+            <!-- /.modal-dialog -->
+
+        </div>
+        <!-- /.Modal Login -->
+        <!-- Modal Signup start -->
+        <div class="modal signUpContent fade" id="ModalSignup" tabindex="-1" role="dialog">
+            <form name="signupForm" novalidate>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                            <h3 class="modal-title-site text-center"> REGISTER </h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group reg-username has-feedback" show-errors="{ trigger: 'keypress' }">
+                                <div>
+                                    <input required name="signupUsername" ng-model="signupFormFields.username" class="form-control input" size="20" placeholder="Enter Username" type="text">
+                                </div>
+
+                                <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!signupForm.signupUsername.$invalid || !signupForm.signupUsername.$dirty" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="signupForm.signupUsername.$invalid || !signupForm.signupUsername.$dirty" aria-hidden="true"></span>
+
+                                <div ng-show="signupForm.signupUsername.$invalid && signupForm.signupUsername.$dirty" ng-messages="signupForm.signupUsername.$error">
+                                    <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Username', 'required') }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group reg-email has-feedback" show-errors="{ trigger: 'keypress' }">
+                                <div>
+                                    <input required name="signupEmail" ng-model="signupFormFields.email" class="form-control input" size="20" placeholder="Enter Email" type="email">
+                                </div>
+
+                                <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!signupForm.signupEmail.$invalid || !signupForm.signupEmail.$dirty" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="signupForm.signupEmail.$invalid || !signupForm.signupEmail.$dirty" aria-hidden="true"></span>
+
+                                <div ng-show="signupForm.signupEmail.$invalid && signupForm.signupEmail.$dirty" ng-messages="signupForm.signupEmail.$error">
+                                    <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Email', 'required') }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group reg-password has-feedback" show-errors="{ trigger: 'keypress' }">
+                                <div>
+                                    <input required name="signupPassword" ng-model="signupFormFields.password" class="form-control input" size="20" placeholder="Password" type="password">
+                                </div>
+
+                                <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!signupForm.signupPassword.$invalid || !signupForm.signupPassword.$dirty" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="signupForm.signupPassword.$invalid || !signupForm.signupPassword.$dirty" aria-hidden="true"></span>
+
+                                <div ng-show="signupForm.signupPassword.$invalid && signupForm.signupUsername.$dirty" ng-messages="signupForm.signupPassword.$error">
+                                    <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Password', 'required') }}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <input name="submit" ng-disabled="signUpForm.$invalid" data-dismiss="modal" class="btn  btn-block btn-lg btn-primary" value="REGISTER" type="submit" ng-click="registerUser(signupFormFields)">
+                                </div>
+                            </div>
+                            <!--userForm-->
+
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center"> Already member? <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"> Sign in </a> </p>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+
+                </div>
+            </form>
+            <!-- /.modal-dialog -->
+
+        </div>
+        <!-- /.ModalSignup End -->
+
+        <div class="navbar navbar-vpshop navbar-fixed-top megamenu" role="navigation">
+            <div class="navbar-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                            <div class="pull-left ">
+                                <ul class="userMenu ">
+                                    <li> <a href="#"> <span class="hidden-xs">HELP</span><i class="fa fa-info-circle hide visible-xs "></i> </a> </li>
+                                    <li> <a href="callto:+8801680531352"> <span> <i class="fa fa-phone hidden-xs"></i></span> <span class="hidden-xs" style="margin-left:5px"> 88 01680 53 1352 </span> <i class="fa fa-phone visible-xs "></i></a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
+                            <div class="pull-right">
+                                <ul class="userMenu">
+                                    <li ng-show="isUserLoggedIn" hidden> <a href="" ng-click="helperService.moveToPage('account')"> <i class="fa fa-user hide visible-xs "></i></a> </li>
+                                    <li ng-show="isUserLoggedIn" hidden> <a href="" ng-click="userLogOut()"> <i class="fa fa-sign-out hide visible-xs "></i> </a> </li>
+                                    <li ng-hide="isUserLoggedIn"> <a href="" data-toggle="modal" data-target="#ModalLogin"><i class="fa fa-sign-in hide visible-xs "></i> </a> </li>
+                                    <li ng-hide="isUserLoggedIn"> <a href="" data-toggle="modal" data-target="#ModalSignup"><i class="fa fa-user-plus hidden-xs"></i><span class="hidden-xs"> Create Account</span> <i class="fa fa-user-plus hide visible-xs "></i> </a> </li>
+                                    <li ng-show="isUserLoggedIn" hidden> <a href=""><i class="fa fa-user"></i> &nbsp;<span class="hidden-xs">Welcome {{ userService.getUserName() }}</span>  </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.navbar-top-->
+
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart" ng-show="subTotal > 0" ng-hide="subTotal <= 0"> <i class="fa fa-shopping-cart colorWhite"> </i> <span class="cartRespons colorWhite" ng-click="helperService.moveToPage('cart')"> </span> </button>
+                    <!--<a class="navbar-brand" href="" ng-click="helperService.moveToPage('home')"> <img class="hidden-xs img-responsive" src="assets/images/vanzpShopLogo-md.png" alt="VanzPShop"> <img class="hide visible-xs img-responsive" src=""> </a>-->
+                    <div class="navbar-brand" ng-click="helperService.moveToPage('home')">VANZ SHOP</div>
+                </div>
+
+                <!-- this part is duplicate from cartMenu  keep it for mobile -->
+                <div class="navbar-cart collapse">
+                    <div class="cartMenu  col-lg-4 col-xs-12 col-md-4" ng-show="subTotal > 0" ng-hide="subTotal <= 0">
+                        <div class="miniCartTable scroll-pane mCustomScrollbar">
+                            <table>
+                                <tbody>
+                                    <tr class="miniCartProduct" ng-repeat="myCart in myCartService.myCarts">
+                                        <td style="20%" class="miniCartProductThumb"><div> <a href="" ng-click="helperService.moveToPage('productDetails', myCart.ItemId)"> <img src="{{ myCart.ImgUrl }}" alt="img"> </a> </div><label>{{ myCart.ImgUrl }}</label></td>
+                                        <td style="40%">
+                                            <div class="miniCartDescription">
+                                                <h4> <a href="" ng-click="helperService.moveToPage('productDetails', myCart.ItemId)"> {{ myCart.Description }} </a> </h4>
+                                                <div class="price"> <span> ${{ myCart.PriceSale }} </span> </div>
+                                            </div>
+                                        </td>
+                                        <td style="10%" class="miniCartQuantity"><a> X {{ myCart.Qty }} </a></td>
+                                        <td style="15%" class="miniCartSubtotal"><span> ${{ myCart.PriceSale * myCart.Qty }} </span></td>
+                                        <td style="5%" class="delete" ng-click="myCartService.removeFromCart(myCart)"><a> x </a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--/.miniCartTable-->
+
+                        <div class="miniCartFooter  miniCartFooterInMobile text-right">
+                            <h3 class="text-right subtotal"> Subtotal: ${{ subTotal }} </h3>
+                            <a class="btn btn-sm btn-danger" ng-click="helperService.moveToPage('cart')"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a> <a class="btn btn-sm btn-primary" ng-click="checkout()"> CHECKOUT </a>
+                        </div>
+                        <!--/.miniCartFooter-->
+
+                    </div>
+                    <!--/.cartMenu-->
+                </div>
+                <!--/.navbar-cart-->
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- change width of megamenu = use class > megamenu-fullwidth, megamenu-60width, megamenu-40width -->
+                        <li class="dropdown megamenu-80width">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-cubes"> </i>&nbsp;PRODUCTS <b class="caret"> </b> </a>
+                            <ul class="dropdown-menu">
+                                <li class="megamenu-content">
+
+                                    <!-- megamenu-content -->
+
+                                    <ul class="col-lg-2  col-sm-2 col-md-2" ng-repeat="productSection in productSections">
+
+                                        <li>
+                                            <p> <strong> {{ productSection.SectionName }} </strong> </p>
+                                        </li>
+                                        <li ng-repeat="product in productSection.Products"> <a href="" ng-click="helperService.moveToPage('category', product.CategoryId)"> {{ product.Name }} </a> </li>
+                                    </ul>
+                                    <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                                        <li class="no-margin productPopItem ">
+                                            <a href=""> <img class="img-responsive" src="~/Content/images/navigation/g4.jpg" alt="img"> </a> <a class="text-center productInfo alpha90" href="">
+                                                Eodem modo typi <br>
+                                                <span> $60 </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                                        <li class="no-margin productPopItem relative">
+                                            <a href=""> <img class="img-responsive" src="~/Content/images/navigation/g5.jpg" alt="img"> </a> <a class="text-center productInfo alpha90" href="">
+                                                Eodem modo typi <br>
+                                                <span> $60 </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li ng-show="isUserLoggedIn" hidden> <a href="" ng-click="helperService.moveToPage('account')"> <i class="fa fa-user"></i>&nbsp;MY ACCOUNT </a> </li>
+                        <li ng-hide="isUserLoggedIn"> <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"><i class="fa fa-user"></i>&nbsp;MY ACCOUNT </a> </li>
+                        <li ng-show="isUserLoggedIn" hidden> <a href="" ng-click="helperService.moveToPage('myWishlist')"><i class=" fa fa-heart"></i>&nbsp; MY WISHLIST </a> </li>
+                        <li ng-hide="isUserLoggedIn"> <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"><i class=" fa fa-heart"></i>&nbsp; MY WISHLIST </a> </li>
+                        <li ng-show="isUserLoggedIn" hidden> <a href="" ng-click="userLogOut()"><i class="fa fa-sign-out"></i>&nbsp; LOG OUT </a> </li>
+                        <li ng-hide="isUserLoggedIn"> <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"><i class="fa fa-sign-in"></i>&nbsp; LOG IN  </a> </li>
+                    </ul>
+
+                    <!--- this part will be hidden for mobile version -->
+                    <div class="nav navbar-nav navbar-right hidden-xs">
+                        <div class="dropdown cartMenu" ng-show="subTotal > 0" ng-hide="subTotal <= 0">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-shopping-cart"> </i> <span class="cartRespons" ng-click="helperService.moveToPage('cart')"> (${{ subTotal }}) </span> <b class="caret"> </b> </a>
+                            <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
+                                <div class="miniCartTable scroll-pane mCustomScrollbar">
+                                    <table>
+                                        <tbody>
+                                            <tr class="miniCartProduct" ng-repeat="myCart in myCartService.myCarts">
+                                                <td style="width:20%" class="miniCartProductThumb"><div> <a href="" ng-click="helperService.moveToPage('productDetails', myCart.ItemId)"> <img src="{{ myCart.ImgUrl }}" alt="img"> </a> </div></td>
+                                                <td style="width:40%">
+                                                    <div class="miniCartDescription">
+                                                        <h4> <a href="" ng-click="helperService.moveToPage('productDetails', myCart.ItemId)"> {{ myCart.Description }} </a> </h4>
+                                                        <div class="price"> <span> ${{ myCart.PriceSale }} </span> </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width:10%" class="miniCartQuantity"><a> X {{ myCart.Qty }} </a></td>
+                                                <td style="width:15%" class="miniCartSubtotal"><span> ${{ myCart.PriceSale * myCart.Qty }} </span></td>
+                                                <td style="width:5%" class="delete"><a ng-click="myCartService.removeFromCart(myCart)"> x </a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--/.miniCartTable-->
+
+                                <div class="miniCartFooter text-right">
+                                    <h3 class="text-right subtotal">SubTotal: ${{ subTotal }} </h3>
+                                    <a class="btn btn-sm btn-danger" ng-click="helperService.moveToPage('cart')"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a> <a class="btn btn-sm btn-primary" ng-click="checkout()"> CHECKOUT </a>
+                                </div>
+                                <!--/.miniCartFooter-->
+
+                            </div>
+                            <!--/.dropdown-menu-->
+                        </div>
+                        <!--/.cartMenu-->
+
+                    </div>
+                    <!--/.navbar-nav hidden-xs-->
+                </div>
+                <!--/.nav-collapse -->
+
+            </div>
+            <!--/.container -->
+
+        </div>
+    </header>
+
+    <div ui-view></div>
+
+    <footer ng-controller="indexViewModel">
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Shop </h3>
+                        <ul>
+                            <li> <a href="" ng-click="helperService.moveToPage('home')"> Home </a> </li>
+                            <li> <a href=""> Category </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Information </h3>
+                        <ul>
+                            <li ng-show="subTotal > 0" ng-hide="subTotal <= 0"> <a href="" ng-click="helperService.moveToPage('cart')"> Cart </a> </li>
+                            <li> <a href=""> About Vanz Shop </a> </li>
+                            <li> <a href=""> Contact us </a> </li>
+                            <li> <a href="" ng-click="helperService.moveToPage('termscondition')"> Terms &amp; Conditions </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> My Account </h3>
+                        <ul>
+                            <li ng-show="!isUserLoggedIn" ng-hide="isUserLoggedIn"> <a href="#ModalSignup"> Account Login </a> </li>
+                            <li ng-show="isUserLoggedIn" ng-hide="!isUserLoggedIn"> <a href="" ng-click="helperService.moveToPage('account')"> My Account </a> </li>
+                            <li ng-show="isUserLoggedIn" ng-hide="!isUserLoggedIn"> <a href="" ng-click="helperService.moveToPage('myAddress')"> My Address </a> </li>
+                            <li ng-show="isUserLoggedIn" ng-hide="!isUserLoggedIn"> <a href="" ng-click="helperService.moveToPage('myWishlist')"> Wisth list </a> </li>
+                            <li ng-show="isUserLoggedIn" ng-hide="!isUserLoggedIn"> <a href="" ng-click="helperService.moveToPage('orderHistory')"> Order list </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Stay in touch </h3>
+                        <ul>
+                            <li>
+                                <div class="input-append newsLatterBox text-center">
+                                    <input type="text" class="full text-center" placeholder="Email ">
+                                    <button class="btn  bg-gray" type="button"> Subscribe <i class="fa fa-long-arrow-right"> </i> </button>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="social">
+                            <li> <a href="http://facebook.com"> <i class="fa fa-facebook"> &nbsp; </i> </a> </li>
+                            <li> <a href="http://twitter.com"> <i class="fa fa-twitter"> &nbsp; </i> </a> </li>
+                            <li> <a href="https://plus.google.com"> <i class="fa fa-google-plus"> &nbsp; </i> </a> </li>
+                            <li> <a href="http://youtube.com"> <i class="fa fa-pinterest"> &nbsp; </i> </a> </li>
+                            <li> <a href="http://youtube.com"> <i class="fa fa-youtube"> &nbsp; </i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </div>
+        <!--/.footer-->
+
+        <div class="footer-bottom">
+
+            <div class="container">
+                <p class="pull-left"> &copy; VANZ SHOP 2016. All rights reserved. </p>
+                <div class="pull-right paymentMethodImg"> 
+                <img height="30" class="pull-right" src="~/Content/images/payment/master_card.png" alt="img"> 
+                <img height="30" class="pull-right" src="~/Content/images/payment/paypal.png" alt="img"> 
+                <img height="30" class="pull-right" src="~/Content/images/payment/american_express_card.png" alt="img"> 
+                <img height="30" class="pull-right" src="~/Content/images/payment/discover_network_card.png" alt="img"> 
+                <img height="30" class="pull-right" src="~/Content/images/payment/google_wallet.png" alt="img"> </div>
+            </div>
+        </div>
+        <!--/.footer-bottom-->
+    </footer>
+
+    <!-- TODO: Need to bundle -->
+    <script src="~/Scripts/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="~/Scripts/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/bower_components/angular/angular.min.js"></script>
+    <script src="~/Scripts/bower_components/angular-route/angular-route.min.js"></script> <!-- TODO: Checked if used -->
+    <script src="~/Scripts/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="~/Scripts/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="~/Scripts/bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="~/Scripts/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="~/Scripts/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="~/Scripts/bower_components/jquery.sha256/jquery.sha256.min.js"></script>
+    <script src="~/Scripts/bower_components/bootbox.js/bootbox.js"></script>
+    <script src="~/Scripts/bower_components/footable/dist/footable.all.min.js"></script>
+    <script src="~/Scripts/bower_components/Smoothproducts/js/smoothproducts.min.js"></script>
+
+    <script src="~/App/App.js"></script>
+   
+    <!-- DIRECTIVES -->
+    <script src="~/App/Directives/CommonDirective.js"></script>
+    <script src="~/App/Directives/ShowErrorsDirective.js"></script>
+
+    <!-- SERVICES -->
+    <script src="~/App/Services/ConstantService.js"></script>
+    <script src="~/App/Services/HelperService.js"></script>
+    <script src="~/App/Services/StoreService.js"></script>
+    <script src="~/App/Services/MyCartService.js"></script>
+    <script src="~/App/Services/SessionService.js"></script>
+    <script src="~/App/Services/UserService.js"></script>
+    <script src="~/App/Services/MyWishListService.js"></script>
+
+    <!-- CONTROLLERS -->
+    <script src="~/App/ViewModels/IndexViewModel.js"></script>
+
+    <script src="~/App/Pages/Home/HomeViewModel.js"></script>
+    <script src="~/App/Pages/Product/ProductViewModel.js"></script>
+    <script src="~/App/Pages/Cart/CartViewModel.js"></script>
+    <script src="~/App/Pages/Authentication/AuthenticationViewModel.js"></script>
+    <script src="~/App/Pages/Checkout/CheckoutViewModel.js"></script>
+    <script src="~/App/Pages/Checkout/OrderDetailsViewModel.js"></script>
+    <script src="~/App/Pages/Account/AccountViewModel.js"></script>
+    <script src="~/App/Pages/Account/OrderHistoryViewModel.js"></script>
+    <script src="~/App/Pages/Account/MyAddressViewModel.js"></script>
+    <script src="~/App/Pages/Account/AddAddressViewModel.js"></script>
+    <script src="~/App/Pages/Account/InformationViewModel.js"></script>
+    <script src="~/App/Pages/Account/MyWishlistViewModel.js"></script>
+    <script src="~/App/Pages/Category/CategoryViewModel.js"></script>
+</body>
+</html>

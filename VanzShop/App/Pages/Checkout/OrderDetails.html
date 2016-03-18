@@ -1,0 +1,67 @@
+﻿<div class="container main-container headerOffset">
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li> <a href="" ng-click="helperService.moveToPage('home')">Home</a> </li>
+            </ul>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-7">
+            <h1 class="section-title-inner"><span>Order #: {{ orderDetail.orderNumber }}</span></h1>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
+            <h4 class="caps"><a href="" ng-click="helperService.moveToPage('home')"><i class="fa fa-chevron-left"></i> Back to shopping </a></h4>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-11 col-md-11 col-sm-9">
+            <div class="row userInfo">
+                <div class="col-lg-12">
+                    <h2 class="block-title-2"> Your Order Details  </h2>
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+                    <table class="footable">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th><strong>Payment Method</strong></th>
+                                <th> Price </th>
+                                <th> Date </th>
+                                <th> Status </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ orderDetail.orderNumber }}</td>
+                                <td>{{ orderDetail.paymentInformation.paymentType }}</td>
+                                <td>${{ orderDetail.subTotal }} </td>
+                                <td>{{ orderDetail.dateOrdered }} </td>
+                                <td><span class="label label-success">{{ orderDetail.orderStatus }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--/row end-->
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5"> </div>
+    </div>
+
+    <div style="clear:both"></div>
+</div><!-- /.main-container -->
+
+<div class="gap"> </div>
+
+<script>
+    $(document).ready(function () {
+
+        $('.footable').footable();
+
+    });
+
+</script>

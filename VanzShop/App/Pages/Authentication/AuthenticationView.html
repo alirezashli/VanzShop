@@ -1,0 +1,129 @@
+﻿<div class="container main-container headerOffset">
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li> <a href="" ng-click="helperService.moveToPage('home')">Home</a> </li>
+                <li class="active"> Authentication </li>
+            </ul>
+        </div>
+    </div><!-- /.row -->
+
+
+    <div class="row">
+
+        <div class="col-lg-12 col-md-12  col-sm-12">
+
+            <h1 class="section-title-inner"><span><i class="fa fa-lock"></i> Authentication</span></h1>
+            
+            <div class="row userInfo">
+                <form name="createAccountForm" novalidate>
+                    <div class="col-xs-12 col-sm-4">
+                        <h2 class="block-title-2"> Create an account </h2>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="createAccountUsername">Username</label>
+                            <input type="text" class="form-control" id="createAccountUsername" name="createAccountUsername" ng-model="loginInformations.username" placeholder="Enter username" required>
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!createAccountForm.createAccountUsername.$invalid || !createAccountForm.createAccountUsername.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="createAccountForm.createAccountUsername.$invalid || !createAccountForm.createAccountUsername.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="createAccountForm.createAccountUsername.$invalid && createAccountForm.createAccountUsername.$dirty" ng-messages="createAccountForm.createAccountUsername.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Username', 'required') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="createAccountEmail">Email address</label>
+                            <input type="email" class="form-control" id="createAccountEmail" name="createAccountEmail" ng-model="loginInformations.email" placeholder="Enter email" required>
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!createAccountForm.createAccountEmail.$invalid || !createAccountForm.createAccountEmail.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="createAccountForm.createAccountEmail.$invalid || !createAccountForm.createAccountEmail.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="createAccountForm.createAccountEmail.$invalid && createAccountForm.createAccountEmail.$dirty" ng-messages="createAccountForm.createAccountEmail.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Email', 'required') }}</p>
+                                <p ng-message="email" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Email address', 'email') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for=" createaccountpassword">Password</label>
+                            <input type="password" class="form-control" name="createAccountPassword" ng-model="loginInformations.password" placeholder="Password" required minlength="{{ constantService.utility.PASSWORD_LENGTH }}">
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!createAccountForm.createAccountPassword.$invalid || !createAccountForm.createAccountPassword.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="createAccountForm.createAccountPassword.$invalid || !createAccountForm.createAccountPassword.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="createAccountForm.createAccountPassword.$invalid && createAccountForm.createAccountPassword.$dirty" ng-messages="createAccountForm.createAccountPassword.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Password', 'required') }}</p>
+                                <p ng-message="minlength" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Password', 'minlength', constantService.utility.PASSWORD_LENGTH) }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="createAccountConfirmPassword">Confirm Password</label>
+                            <input type="password" compare-to="loginInformations.password" class="form-control" name="createAccountConfirmPassword" ng-model="confirmPassword" placeholder="Confirm Password" required minlength="{{ constantService.utility.PASSWORD_LENGTH }}">
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!createAccountForm.createAccountConfirmPassword.$invalid || !createAccountForm.createAccountConfirmPassword.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="createAccountForm.createAccountConfirmPassword.$invalid || !createAccountForm.createAccountConfirmPassword.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="createAccountForm.createAccountConfirmPassword.$invalid && createAccountForm.createAccountConfirmPassword.$dirty" ng-messages="createAccountForm.createAccountConfirmPassword.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Confirm Password', 'required') }}</p>
+                                <p ng-message="minlength" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Confirm Password', 'minlength', constantService.utility.PASSWORD_LENGTH) }}</p>
+                                <p ng-message="compareTo" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Confirm Password', 'match') }}</p>
+                            </div>
+                        </div>
+
+                        <button type="submit" ng-disabled="createAccountForm.$invalid" class="btn btn-primary" ng-click="registerUser(loginInformations)"><i class="fa fa-user"></i> Create an account</button>
+                    </div>
+                </form>
+
+                <form name="alreadyRegisteredForm" novalidate>
+                    <div class="col-xs-12 col-sm-4">
+                        <h2 class="block-title-2"><span>Already registered?</span></h2>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="alreadyRegisteredEmail">Email address</label>
+                            <input type="email" class="form-control" name="alreadyRegisteredEmail" ng-model="alreadyRegisteredFormFields.email" placeholder="Email" required />
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!alreadyRegisteredForm.alreadyRegisteredEmail.$invalid || !alreadyRegisteredForm.alreadyRegisteredEmail.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="alreadyRegisteredForm.alreadyRegisteredEmail.$invalid || !alreadyRegisteredForm.alreadyRegisteredEmail.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="alreadyRegisteredForm.alreadyRegisteredEmail.$invalid && alreadyRegisteredForm.alreadyRegisteredEmail.$dirty" ng-messages="alreadyRegisteredForm.alreadyRegisteredEmail.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Email', 'required') }}</p>
+                                <p ng-message="email" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Email address', 'email') }}</p>
+                            </div>
+
+                        </div>
+                        <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                            <label for="alreadyRegisteredPassword">Password</label>
+                            <input type="password" class="form-control" name="alreadyRegisteredPassword" ng-model="alreadyRegisteredFormFields.password" placeholder="Password" required>
+
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!alreadyRegisteredForm.alreadyRegisteredPassword.$invalid || !alreadyRegisteredForm.alreadyRegisteredPassword.$dirty" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="alreadyRegisteredForm.alreadyRegisteredPassword.$invalid || !alreadyRegisteredForm.alreadyRegisteredPassword.$dirty" aria-hidden="true"></span>
+
+                            <div ng-show="alreadyRegisteredForm.alreadyRegisteredPassword.$invalid && alreadyRegisteredForm.alreadyRegisteredPassword.$dirty" ng-messages="alreadyRegisteredForm.alreadyRegisteredPassword.$error">
+                                <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Password', 'required') }}</p>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="checkbox">
+                                Remember me
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <p><a title="Recover your forgotten password" href="" ng-click="helperService.moveToPage('forgotPassword')">Forgot your password? </a></p>
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-disabled="alreadyRegisteredForm.$invalid" ng-click="loginUserByEmail(alreadyRegisteredFormFields.email, alreadyRegisteredFormFields.password)"><i class="fa fa-sign-in"></i> Sign In</button>
+                    </div>
+                </form>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <h2 class="block-title-2"><span>Checkout as Guest</span></h2>
+                        <p>Don't have an account and you don't want to register? Checkout as a guest instead!</p>
+                        <a href="" class="btn btn-primary" ng-click="helperService.moveToPage('checkout/addressView')"><i class="fa fa-sign-in"></i> Checkout as Guest</a>
+                    </div>
+</div> <!--/row end-->
+
+        </div>
+    </div> <!--/row-->
+
+    <div style="clear:both"></div>
+</div>
+<!-- /.main-container -->
+
+<div class="gap"> </div>

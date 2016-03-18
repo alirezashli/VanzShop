@@ -1,0 +1,171 @@
+﻿<div class="w100 clearfix">
+    <div class="row userInfo">
+        <div class="col-lg-12">
+            <h2 class="block-title-2"> Payment method </h2>
+            <p>Please select the preferred shipping method to use on this order.</p>
+            <hr>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <div class="paymentBox">
+
+                <accordion close-others="true">
+                    <accordion-group is-open="true">
+                        <accordion-heading>
+                            <span class="numberCircuil">Option 1</span> <strong> Cash on Delivery</strong> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </accordion-heading>
+                        <accordion-content>
+                            <form name="cashDeliveryForm" ng-submit="submitCashDeliveryForm()">
+                              <div class=" panel-body">
+                                <p>All transactions are secure and encrypted, and we neverstor To learn more, please view our privacy policy.</p>
+                                <br>
+                                <div class="form-group">
+                                    <label for="paymentComments">Add Comments About Your Order <i>(Optional)</i></label>
+                                    <textarea id="cashPaymentComments" class="form-control" ng-model="paymentFields.cashPaymentComments" name="cashPaymentComments" cols="26" rows="3"></textarea>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="checkbox-inline" for="cashPaymentAgree">
+                                        <input required name="cashPaymentAgree" id="cashPaymentAgree" ng-model="cashPaymentAgree" type="checkbox">
+                                        I have read and agree to the <a href="#termscondition">Terms & Conditions</a>
+                                    </label>
+                                </div>
+                                <div class="pull-right"> 
+                                    <button type="submit" ng-disabled="cashDeliveryForm.$invalid" class="btn btn-primary btn-small"> Order &nbsp; <i class="fa fa-arrow-circle-right"></i> </button>
+                                </div>
+                            </div>
+                          </form>
+                        </accordion-content>
+
+                    </accordion-group>
+                    <accordion-group>
+                        <accordion-heading>
+                            <span class="numberCircuil">Option 2</span> <strong> MasterCard</strong> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </accordion-heading>
+                        <accordion-content>
+                            <form name="paymentMasterCardForm" ng-submit="submitMasterCardForm()">
+                                <div class="panel-body">
+                                    <p>All transactions are secure and encrypted, and we neverstor To learn more, please view our privacy policy.</p>
+                                    <br>
+                                    <div class="panel open">
+                                        <div class="creditCard">
+                                            <div class="cartBottomInnerRight paymentCard">
+                                            </div>
+                                            <span>Supported</span> <span>Credit Cards</span>
+
+                                            <div class="paymentInput">
+                                                <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                                                    <label for="paymentCardNumber">Credit Card Number *</label>
+                                                    <br>
+                                                    <input class="form-control" required id="paymentCardNumber" type="text" ng-model="paymentFields.paymentCardNumber" name="paymentCardNumber" style="width:300px;">
+
+                                                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!paymentMasterCardForm.paymentCardNumber.$invalid || !paymentMasterCardForm.paymentCardNumber.$dirty" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="paymentMasterCardForm.paymentCardNumber.$invalid || !paymentMasterCardForm.paymentCardNumber.$dirty" aria-hidden="true"></span>
+
+                                                    <div ng-show="paymentMasterCardForm.paymentCardNumber.$invalid && paymentMasterCardForm.paymentCardNumber.$dirty" ng-messages="paymentMasterCardForm.paymentCardNumber.$error">
+                                                        <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Credit Card Number', 'required') }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="paymentInput">
+                                                <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                                                    <label for="paymentCardNumberName">Name on Credit Card *</label>
+                                                    <br>
+                                                    <input required class="form-control" type="text" name="paymentCardName" id="paymentCardName" ng-model="paymentFields.cardName" style="width:300px;">
+
+                                                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!paymentMasterCardForm.paymentCardName.$invalid || !paymentMasterCardForm.paymentCardName.$dirty" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="paymentMasterCardForm.paymentCardName.$invalid || !paymentMasterCardForm.paymentCardName.$dirty" aria-hidden="true"></span>
+
+                                                    <div ng-show="paymentMasterCardForm.paymentCardName.$invalid && paymentMasterCardForm.paymentCardName.$dirty" ng-messages="paymentMasterCardForm.paymentCardName.$error">
+                                                        <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Credit Card Name', 'required') }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="paymentInput">
+                                                <label>Expiration date *</label>
+                                                <br>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 no-margin-left no-padding">
+                                                    <div class="form-group has-feedback" show-errors>
+                                                        <select class="form-control" required id="paymentCardMonth" name="paymentCardMonth" ng-model="paymentFields.cardMonth">
+                                                            <option value="">Month</option>
+                                                            <option value="1">01 - January</option>
+                                                            <option value="2">02 - February</option>
+                                                            <option value="3">03 - March</option>
+                                                            <option value="4">04 - April</option>
+                                                            <option value="5">05 - May</option>
+                                                            <option value="6">06 - June</option>
+                                                            <option value="7">07 - July</option>
+                                                            <option value="8">08 - August</option>
+                                                            <option value="9">09 - September</option>
+                                                            <option value="10">10 - October</option>
+                                                            <option value="11">11 - November</option>
+                                                            <option value="12">12 - December</option>
+                                                        </select>
+
+                                                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!paymentMasterCardForm.paymentCardMonth.$invalid || !paymentMasterCardForm.paymentCardMonth.$dirty" aria-hidden="true"></span>
+                                                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="paymentMasterCardForm.paymentCardMonth.$invalid || !paymentMasterCardForm.paymentCardMonth.$dirty" aria-hidden="true"></span>
+
+                                                        <div ng-show="paymentMasterCardForm.paymentCardMonth.$invalid && paymentMasterCardForm.paymentCardMonth.$dirty" ng-messages="paymentMasterCardForm.paymentCardMonth.$error">
+                                                            <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Expiration Month', 'required') }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                                <div class="col-lg-4 col-md-4 col-sm-4 no-margin-left no-padding">
+                                                    <div class="form-group has-feedback" show-errors>
+                                                        <select class="form-control" required id="paymentCardYear" name="paymentCardYear" ng-model="paymentFields.cardYear">
+                                                            <option value="">Year</option>
+                                                            <option value="2013">2013</option>
+                                                            <option value="2014">2014</option>
+                                                            <option value="2015">2015</option>
+                                                            <option value="2016">2016</option>
+                                                            <option value="2017">2017</option>
+                                                            <option value="2018">2018</option>
+                                                            <option value="2019">2019</option>
+                                                            <option value="2020">2020</option>
+                                                            <option value="2021">2021</option>
+                                                            <option value="2022">2022</option>
+                                                            <option value="2023">2023</option>
+                                                        </select>
+
+                                                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!paymentMasterCardForm.paymentCardYear.$invalid || !paymentMasterCardForm.paymentCardYear.$dirty" aria-hidden="true"></span>
+                                                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="paymentMasterCardForm.paymentCardYear.$invalid || !paymentMasterCardForm.paymentCardYear.$dirty" aria-hidden="true"></span>
+
+                                                        <div ng-show="paymentMasterCardForm.paymentCardYear.$invalid && paymentMasterCardForm.paymentCardYear.$dirty" ng-messages="paymentMasterCardForm.paymentCardYear.$error">
+                                                            <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Expiration Year', 'required') }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="clear:both"></div>
+
+                                        <div class="paymentInput clearfix">
+                                            <div class="form-group has-feedback" show-errors="{ trigger: 'keypress' }">
+                                                <label for="VerificationCode">Verification Code *</label>
+                                                <br>
+                                                <input class="form-control" required type="text" id="paymentCardVerification" name="paymentCardVerification" ng-model="paymentFields.cardVerification" style="width:90px;">
+
+                                                <span class="glyphicon glyphicon-remove form-control-feedback" ng-hide="!paymentMasterCardForm.paymentCardVerification.$invalid || !paymentMasterCardForm.paymentCardVerification.$dirty" aria-hidden="true"></span>
+                                                <span class="glyphicon glyphicon-ok form-control-feedback" ng-hide="paymentMasterCardForm.paymentCardVerification.$invalid || !paymentMasterCardForm.paymentCardVerification.$dirty" aria-hidden="true"></span>
+
+                                                <div ng-show="paymentMasterCardForm.paymentCardVerification.$invalid && paymentMasterCardForm.paymentCardVerification.$dirty" ng-messages="paymentMasterCardForm.paymentCardVerification.$error">
+                                                    <p ng-message="required" class="help-block">{{ constantService.messages.CUSTOM_MESSAGE('Verification Code', 'required') }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pull-right">
+                                        <button type="submit" ng-disabled="paymentMasterCardForm.$invalid" class="btn btn-primary btn-small"> Order &nbsp; <i class="fa fa-arrow-circle-right"></i> </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </accordion-content>
+
+                    </accordion-group>
+                 </accordion>
+    </div>
+    </div>
+</div>
