@@ -295,6 +295,8 @@
     <Content Include="Content\images\readme\checkout-payment.jpg" />
     <Content Include="Content\images\readme\home.jpg" />
     <Content Include="Content\images\readme\login.jpg" />
+    <Content Include="Content\images\readme\mobile-view-home.jpg" />
+    <Content Include="Content\images\readme\mobile-view-menu.jpg" />
     <Content Include="Content\images\readme\my-account.jpg" />
     <Content Include="Content\images\readme\my-cart.jpg" />
     <Content Include="Content\images\readme\my-order.jpg" />
