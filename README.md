@@ -38,4 +38,7 @@ Asp.Net 4.5, AngularJS 1.5, Responsive Design, eCommerce
 <img src="https://raw.githubusercontent.com/gadjetboi/VanzShop/master/VanzShop/Content/images/readme/checkout-payment.jpg">
 <h3>Order Review</h3>
 <img src="https://raw.githubusercontent.com/gadjetboi/VanzShop/master/VanzShop/Content/images/readme/checkout-order.jpg">
-<h3>Mobile View</h3>
+<h3>Mobile View Home</h3>
+<img src="https://raw.githubusercontent.com/gadjetboi/VanzShop/master/VanzShop/Content/images/readme/mobile-view-home.jpg">
+<h3>Mobile View Menu</h3>
+<img src="https://raw.githubusercontent.com/gadjetboi/VanzShop/master/VanzShop/Content/images/readme/mobile-view-menu.jpg">
