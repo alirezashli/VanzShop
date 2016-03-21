@@ -14,8 +14,6 @@ Asp.Net 4.5, AngularJS 1.5, Responsive Design, eCommerce
 <img src="https://raw.githubusercontent.com/gadjetboi/VanzShop/master/VanzShop/Content/images/readme/my-account.jpg">
 <h3>Order History<h3>
 <img src="https://raw.githubusercontent.com/gadjetboi/VanzShop/master/VanzShop/Content/images/readme/my-order.jpg">
-<h3>My Address<h3>
-<p>My Address image here...</p>
 <h3>Personal Information<h3>
 <img src="https://raw.githubusercontent.com/gadjetboi/VanzShop/master/VanzShop/Content/images/readme/personal-info.jpg">
 <h3>My Wish List<h3>
