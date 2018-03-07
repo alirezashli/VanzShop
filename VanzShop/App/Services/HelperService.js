@@ -2,12 +2,12 @@
     var me = this;
 
     me.getBaseURL = function () {
+        //return 'http://localhost/vanzshop/'
         return 'http://localhost:55464/';
         //return 'http://vanzpshop.somee.com/';
     }
 
-    me.convertToTwoDecimalPlaces = function (value)
-    {
+    me.convertToTwoDecimalPlaces = function (value) {
         return parseFloat(Math.round(value * 100) / 100).toFixed(constantService.utility.NUMBER_OF_DECIMAL_PLACES);
     }
 

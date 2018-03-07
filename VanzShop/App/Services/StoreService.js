@@ -9,17 +9,18 @@
     me.allProducts = [];
     me.selectedProductItem = null;
 
-    $http.get('../../Content/jsonData/product.json').success(function (data, status, headers, config) {
-
-        me.sections = data || null;
+    $http({
+        method: 'GET',
+        url: '../../Content/jsonData/product.json'
+    }).then(function (result) {
+       
+        me.sections = result.data || null;
 
         me.getProducts();
-    }).
-    error(function (data, status, headers, config) {
+    }, function (error) {
         console.log(status);
     });
-
-
+   
     me.getProducts = function () {
         angular.forEach(me.sections, function (section, key) {
             angular.forEach(section.Products, function (product, key) {

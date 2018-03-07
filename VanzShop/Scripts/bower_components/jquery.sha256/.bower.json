@@ -8,8 +8,7 @@
     "tag": "1.1.0",
     "commit": "8ef98d58072cfd16c6a86d7e527b2c234e50f2c2"
   },
-  "_source": "git://github.com/lellex/jquery.sha256.git",
+  "_source": "https://github.com/lellex/jquery.sha256.git",
   "_target": "^1.1.0",
-  "_originalSource": "jquery.sha256",
-  "_direct": true
+  "_originalSource": "jquery.sha256"
 }
